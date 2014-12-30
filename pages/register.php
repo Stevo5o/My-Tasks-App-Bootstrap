@@ -1,0 +1,2 @@
+<!-- register.php -->
+<?php
