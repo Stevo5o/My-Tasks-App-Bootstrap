@@ -78,7 +78,6 @@ class DB {
    }
 
    // transaction methods 
-
    public function beginTransaction() {
     return $this->dbh->beginTransaction();
    }
