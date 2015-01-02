@@ -1,10 +1,8 @@
 <?php 
-error_reporting(0);
+error_reporting();
 
 // DB params
-$config = array(
-	'username' 	=> 'root',
-	'password' 	=> '',
-   	'host' 		=> '127.0.0.1',
-  	'dbname'    => 'stej_tasks'
-	);
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "stej_tasks");

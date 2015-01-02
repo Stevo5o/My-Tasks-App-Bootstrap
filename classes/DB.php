@@ -3,10 +3,10 @@
 
 class DB {
 
-   private $username = username,
-           $host = host,
-           $dbname = dbname,
-           $password = password,
+   private $host = DB_HOST,
+           $user = DB_USER,
+           $pass = DB_PASS,
+           $dbname = DB_NAME,
            $dbh, // DB handler
            $error,
            $stmt;
@@ -21,7 +21,7 @@ class DB {
       );
       // create a PDO instance
       try {
-         $this->dbh = new PDO($dsn, $this->username, $this->password, $options);
+         $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
       } catch (PDOException $e) {
          
       }
@@ -75,8 +75,8 @@ class DB {
    }
 
    // returns last inserted id
-   public function lastInsertedId(){
-    return $this->dbh->lastInsertID();
+   public function lastInsertId(){
+    return $this->dbh->lastInsertId();
    }
 
    // transaction methods 
