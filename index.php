@@ -27,7 +27,7 @@ if (isset($_POST['login_submit'])) {
       session_start();
       $_SESSION['username'] = $username;
       $_SESSION['password'] = $password;
-      $_SESSION['logged_in'] = 1;
+      $_SESSION['logged_in'] = 0;
    } else {
       $login_msg[] = 'Sorry, that login does not work';
    }
