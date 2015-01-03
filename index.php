@@ -18,16 +18,17 @@ if (isset($_POST['login_submit'])) {
    $enc_password = md5('$password');
 
    // query
-   $database->query("SELECT * FROM users WHERE username = :username AND password = :password");
+   $database->query("SELECT * FROM users WHERE username = :username AND password = password");
    $database->bind(':username', $username);
-   $database->bind(':password', $enc_password);
+   //$database->bind(':password', $enc_password);
    $rows = $database->resultset();
    $count = count($rows);
    if ($count > 0) {
       session_start();
       $_SESSION['username'] = $username;
       $_SESSION['password'] = $password;
-      $_SESSION['logged_in'] = 0;
+      $_SESSION['logged_in'] = 1;
+      echo 'login';
    } else {
       $login_msg[] = 'Sorry, that login does not work';
    }
@@ -119,7 +120,7 @@ if(isset($POST['logout_submit'])) {
                      <!-- SIDEBAR -->
                      <h3>Login Form</h3>
                      <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <?php if (!isset($_SESSION['logged_in'])) : ?>
+                        <?php if (isset($_SESSION['logged_in'])) : ?>
                            <?php 
                            foreach ($login_msg as $msg) : ?>
                               <?php echo $msg . '<br>'; ?>
